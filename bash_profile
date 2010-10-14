@@ -1,14 +1,12 @@
-export JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_OPTS="-d32"
+source ~/.bash/aliases
+source ~/.bash/completions
+source ~/.bash/paths
+source ~/.bash/config
 
-export PATH=~/Library/Scripts:$PATH
-export EDITOR="mate -w" 
-
-alias ll='ls -la'
-
-# bash-completion
-if [ -f /opt/local/etc/bash_completion ]; then
-    . /opt/local/etc/bash_completion
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
 fi
 
-source ~/.bashrc
+if [ -f ~/.localrc ]; then
+  . ~/.localrc
+fi
