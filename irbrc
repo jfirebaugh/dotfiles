@@ -1,22 +1,31 @@
-require 'rubygems'
+#!/usr/bin/ruby
 require 'irb/completion'
-require 'pp'
+require 'irb/ext/save-history'
 
-begin
-  require 'map_by_method'
-rescue LoadError
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+IRB.conf[:AUTO_INDENT] = true
+
+%w[rubygems pp map_by_method what_methods wirble].each do |gem|
+  begin
+    require gem
+  rescue LoadError
+  end
 end
 
-begin
-  require 'what_methods'
-rescue LoadError
-end
-
-begin
-  require 'wirble'        
+if defined?(Wirble)
   Wirble.init
   Wirble.colorize
-rescue LoadError
 end
 
-IRB.conf[:AUTO_INDENT]=true
+def copy(str)
+  IO.popen('pbcopy', 'w') { |f| f << str.to_s }
+end
+
+def paste
+  `pbpaste`
+end
+
+load File.dirname(__FILE__) + '/.railsrc' if $0 == 'irb' && ENV['RAILS_ENV']
