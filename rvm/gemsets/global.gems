@@ -1,2 +1,4 @@
 rake
 rdoc
+bundler
+wirble
