@@ -1,4 +1,4 @@
-export PATH=~/Library/Scripts:$PATH
+export PATH=~/Library/Scripts:/usr/local/bin:/usr/local/sbin:$PATH
 
 export CDPATH=.:~:~/Development
 
