@@ -1,0 +1,40 @@
+[user]
+	name = John Firebaugh
+	email = john.firebaugh@gmail.com
+[branch]
+	autosetuprebase = always
+	autosetupmerge = true
+[github]
+	user = jfirebaugh
+	token = !security 2>&1 >/dev/null find-generic-password -gs github.token | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
+[core]
+	excludesfile = ~/.gitignore
+[alias]
+	co = checkout
+	st = status
+	di = diff
+	ci = commit
+	br = branch
+	sta = stash
+	cp = cherry-pick
+	rbm = rebase -i origin/master
+	rbc = rebase --continue
+	rba = rebase --abort
+[push]
+	default = tracking
+[merge]
+	tool = ext_merge
+[mergetool "ext_merge"]
+	cmd = ext_merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+	keepTemporaries = false
+	trustExitCode = false
+	keepBackup = false
+[mergetool]
+	keepBackup = false
+[diff]
+	external = ext_diff
+[color]
+	ui = true
+	diff = auto
+	status = auto
+	branch = auto
