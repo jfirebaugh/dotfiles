@@ -2,3 +2,7 @@
 .yardoc
 .orig
 .DS_Store
+nbproject
+manifest.mf
+build.xml
+build/built-jar.properties
