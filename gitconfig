@@ -6,7 +6,6 @@
 	autosetupmerge = true
 [github]
 	user = jfirebaugh
-	token = !security 2>&1 >/dev/null find-generic-password -gs github.token | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/'
 [core]
 	excludesfile = ~/.gitignore
 [alias]
@@ -18,14 +17,15 @@
 	sta = stash
 	cp = cherry-pick
 	rbm = rebase -i origin/master
+	rbu = rebase -i @{u}
 	rbc = rebase --continue
 	rba = rebase --abort
 [push]
-	default = tracking
+	default = current
 [merge]
 	tool = ext_merge
 [mergetool "ext_merge"]
-	cmd = ext_merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+	cmd = /Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
 	keepTemporaries = false
 	trustExitCode = false
 	keepBackup = false
