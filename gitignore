@@ -6,3 +6,4 @@ nbproject
 manifest.mf
 build.xml
 build/built-jar.properties
+node_modules
