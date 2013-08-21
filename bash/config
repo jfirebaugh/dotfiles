@@ -1,2 +1,2 @@
-export PS1="\w \$(~/.rvm/bin/rvm-prompt u g) "
+export PS1="\w $ "
 export EDITOR="mate -w" 
